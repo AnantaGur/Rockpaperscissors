@@ -17,7 +17,7 @@ function userInput() {
         (playerSelection.toLowerCase() == 'paper') ||
         (playerSelection.toLowerCase() == 'scissors')) {
         console.log(playRound(playerSelection, computerSelection));
-    } else {
+    } else if (playRound()) {
         alert('That is not a valid choice.');
         userInput();
     }
@@ -29,22 +29,24 @@ function playRound(playerSelection, computerSelection) {
     playerSelection = playerSelection.toLowerCase()
 
     if (playerSelection == computerSelection) {
-        return (`This is a tie the score is still ${playerScore} : ${computerScore}`);
+        alert(`This is a tie the score is still ${playerScore} : ${computerScore}`);
     } else if ((playerSelection == 'rock' && computerSelection == 'scissors') ||
         (playerSelection == 'paper' && computerSelection == 'rock') ||
         (playerSelection == 'scissors' && computerSelection == 'paper')) {
         ++playerScore
+        alert(`You win you\'re at ${playerScore} : ${computerScore}`)
         if (playerScore == 5) {
-            return ('You have won it all baby!');
-        } return (`You win you\'re at ${playerScore} : ${computerScore}`)
+            alert('You have won it all baby!');
+        }
     } else if ((playerSelection == 'rock' && computerSelection == 'paper') ||
         (playerSelection == 'paper' && computerSelection == 'scissors') ||
         (playerSelection == 'scissors' && computerSelection == 'rock')) {
-        ++computerScore
-        if (computerScore == 5) {
-            return ('Too bad you lose!');
-        } return (`You lose you\'re at ${playerScore} : ${computerScore}`)
         //could've also done }else {console.log('You lose!')} instead of else if and recreating every scenario.
+        ++computerScore
+        alert(`You lose you\'re at ${playerScore} : ${computerScore}`)
+        if (computerScore == 5) {
+            alert('Too bad you lose!');
+        }
     } else {
         console.log('Something Went wrong')
     }
