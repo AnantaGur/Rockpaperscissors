@@ -1,3 +1,4 @@
+
 function computerPlay() {
     choices = ['rock', 'paper', 'scissors']
     let random = choices[Math.floor(Math.random() * choices.length)]
@@ -6,6 +7,22 @@ function computerPlay() {
 
 let playerScore = 0;
 let computerScore = 0;
+computerSelection = computerPlay().toLowerCase;
+
+userInput();
+
+function userInput() {
+    playerSelection = prompt('Rock, Paper, or Scissors?', '');
+    if ((playerSelection.toLowerCase() == 'rock') ||
+        (playerSelection.toLowerCase() == 'paper') ||
+        (playerSelection.toLowerCase() == 'scissors')) {
+        console.log(playRound(playerSelection, computerSelection));
+    } else {
+        alert('That is not a valid choice.');
+        userInput();
+    }
+    userInput();
+}
 
 function playRound(playerSelection, computerSelection) {
     computerSelection = computerPlay().toLowerCase()
@@ -32,5 +49,6 @@ function playRound(playerSelection, computerSelection) {
         console.log('Something Went wrong')
     }
 }
+
 
 
